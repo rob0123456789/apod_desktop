@@ -1,6 +1,6 @@
 # apod_desktop
 
-Program that takes a random Astronomy Picture of the Day (https://apod.nasa.gov/apod/astropix.html) image and sets it as your desktop background.
+Program that sets a random Astronomy Picture of the Day (https://apod.nasa.gov/apod/astropix.html) image as your desktop background.
 
 In the config file:
 
