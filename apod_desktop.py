@@ -9,9 +9,17 @@ import apod_config as apc
 
 # Retern the complete set of configuration variables
 
+def connected_to_internet(url='https://apod.nasa.gov/apod/astropix.html', timeout=5):
+    try:
+        _ = requests.head(url, timeout=timeout)
+        return True
+    except requests.ConnectionError:
+        print("No internet connection available.")
+    return False
+
 def fetch_config():
 
-    return apc.api_key, apc.image_file, apc.html_file, apc.destination
+    return apc.api_key, apc.image_file, apc.html_file, apc.desktop_command
 
 #Set the date range between Jan 1 2015 and today (image quality is generally better after Jan 1 2015)
 def today():
@@ -45,6 +53,7 @@ def image_get(date, key):
         response = requests.get(api_url)
         json_r = response.json()
         url = json_r['url']
+        print(json_r)
     
     return url, url_date
 
@@ -85,7 +94,7 @@ def write_HTML(date, html_file):
     """
 
     with open(html_file, "w") as file:
-        
+
         file.write(html)
 
     return

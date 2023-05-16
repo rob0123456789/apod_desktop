@@ -1,10 +1,13 @@
 import apod_desktop as ap
 
 
-
 def main():
 
-    key, im_file, url_file, destination = ap.fetch_config()
+    _ = False
+    while _ == False:
+        _ = ap.connected_to_internet()
+
+    key, im_file, url_file, desktop_command = ap.fetch_config()
 
     day = ap.today()
 
@@ -12,7 +15,7 @@ def main():
 
     ap.save_image(url, im_file)
 
-    ap. write_desktop(im_file, destination)
+    ap. write_desktop(im_file, desktop_command)
 
     ap.write_HTML(url_Date, url_file)
 
